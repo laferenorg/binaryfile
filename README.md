@@ -96,6 +96,23 @@ myFile.init();
 myFile.save();
 ```
 
+### `type` And `length`
+this section it's features. For type function it's for get type of data using id.
+And then for length function for get length of data.
+Example:
+```CPP
+std::binaryfile myFile = "namefile.db";
+
+/* Section For Adding Data Number */
+myFile.add_number<int>(20);
+
+/* Section For Get Type */
+std::cout << myFile.type(1) << std::endl;
+
+/* Section For Get Length */
+std::cout << myFile.length() << std::endl;
+```
+
 ## Thanking You In Crypto:
 - Bitcoin : 3Q9KL3pbrzHVNKzmcysgMxcyU8EVHvCRGD
 - Ethereum: 0x541736e629677Fb46ead7AC3DAd056689E2175d5
