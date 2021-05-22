@@ -694,6 +694,7 @@
 	#include <fstream>
 	#include <ios>
 	#include <vector>
+	#include <array>
 #else
 	#error "You must using C++"
 #endif
@@ -796,7 +797,57 @@ namespace std _GLIBCXX_VISIBILITY(default)
 				typename __data__template>
 			__data__template get_number(__data__int__);
 			__data__string__ get_string(__data__int__);
+		public:
+			__data__string__ type(__data__int__);
+		public:
+			__data__int__ length();
 	};
+
+	__data__int__ __binary__file__class::length() {
+		__data__int__ __data__lengths__ = 0x0000;
+		if((__data__int__)__data__of__vector__.size() != 0) {
+			__data__lengths__ += 0x00001;
+			for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__.size()); _tp_++) {
+				if(__data__of__vector__[_tp_].__indx__ != __data__lengths__) {
+					__data__lengths__ += 0x00001;
+				}
+			}
+		}
+		return __data__lengths__;
+	}
+
+	__data__string__ __binary__file__class::type(__data__int__ __id__par__) {
+		array<__data__string__, 5> __type__return__ = {
+			"int", "float", "double", "string", "unknow"};
+		__data__int__ __data__return__select = 0x0004;
+		for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__.size()); _tp_++) {
+			if((__data__of__vector__[_tp_].__type__ == _Type_Start) &&
+			   (__data__of__vector__[_tp_].__indx__ == __id__par__) &&
+			   (__data__of__vector__[_tp_].__data__ == 0x00001) &&
+			   (__data__of__vector__[_tp_ + 0x00001].__type__ == _Type_Int)) {
+				__data__return__select = 0x0000;
+			}
+			if((__data__of__vector__[_tp_].__type__ == _Type_Start) &&
+			   (__data__of__vector__[_tp_].__indx__ == __id__par__) &&
+			   (__data__of__vector__[_tp_].__data__ == 0x00001) &&
+			   (__data__of__vector__[_tp_ + 0x00001].__type__ == _Type_Float)) {
+				__data__return__select = 0x0001;
+			}
+			if((__data__of__vector__[_tp_].__type__ == _Type_Start) &&
+			   (__data__of__vector__[_tp_].__indx__ == __id__par__) &&
+			   (__data__of__vector__[_tp_].__data__ == 0x00001) &&
+			   (__data__of__vector__[_tp_ + 0x00001].__type__ == _Type_Double)) {
+				__data__return__select = 0x0002;
+			}
+			if((__data__of__vector__[_tp_].__type__ == _Type_Start) &&
+			   (__data__of__vector__[_tp_].__indx__ == __id__par__) &&
+			   (__data__of__vector__[_tp_].__data__ > 0x00001) &&
+			   (__data__of__vector__[_tp_ + 0x00001].__type__ == _Type_Char)) {
+				__data__return__select = 0x0003;
+			}
+		}
+		return __type__return__[__data__return__select];
+	}
 
 	__data__void__ __binary__file__class::clear() {
 		__data__of__vector__.clear();
