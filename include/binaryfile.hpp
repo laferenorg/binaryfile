@@ -887,6 +887,7 @@ namespace std _GLIBCXX_VISIBILITY(default)
 			__helper__data__.__file__.seekg(_tp_ * sizeof(__table__data__));
 			__helper__data__.__file__.read((__data__char__*)&__data__tp__, sizeof(__table__data__));
 			__data__of__vector__.push_back(__data__tp__);
+			__data__index__ = (__data__int__)__data__tp__.__indx__ + 0x0001;
 		}
 		__close__management();
 	}
