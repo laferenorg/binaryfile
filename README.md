@@ -113,6 +113,22 @@ std::cout << myFile.type(1) << std::endl;
 std::cout << myFile.length() << std::endl;
 ```
 
+### `update_number` And `update_string`
+this section it's features. For update data.
+Info: `You can change from int to string. or type to another type`.
+Example:
+```CPP
+std::binaryfile myFile = "namefile.db";
+
+/* Section For Adding Data Number */
+myFile.add_number<int>(20);
+myFile.add_number<float>(32.4f);
+
+/* Section For Update Data */
+myFile.update_string(1, "Hello, World!");
+myFile.update_number<int>(2, 30);
+```
+
 ## Thanking You In Crypto:
 - Bitcoin : 3Q9KL3pbrzHVNKzmcysgMxcyU8EVHvCRGD
 - Ethereum: 0x541736e629677Fb46ead7AC3DAd056689E2175d5
