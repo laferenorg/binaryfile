@@ -801,6 +801,11 @@ namespace std _GLIBCXX_VISIBILITY(default)
 			__data__string__ type(__data__int__);
 		public:
 			__data__int__ length();
+		public:
+			template<
+				typename __data__template>
+			__data__void__ update_number(__data__int__, __data__template);
+			__data__void__ update_string(__data__int__, __data__string__);
 	};
 
 	__data__int__ __binary__file__class::length() {
@@ -975,6 +980,138 @@ namespace std _GLIBCXX_VISIBILITY(default)
 			}
 		} else {
 			throw "Can't know type name in function get_number";
+		}
+	}
+
+	__data__void__ __binary__file__class::update_string(__data__int__ __id__par__, __data__string__ __par__) {
+		vector<__table__data__> __data__of__vector__temp__;
+		__data__bool__ __its__rewrite__ = 0x0000;
+		for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__.size()); _tp_++) {
+			if(__data__of__vector__[_tp_].__indx__ == __id__par__) {
+				if(!__its__rewrite__) {
+					__table__data__ __data__register__;
+						__data__register__.__indx__ = __id__par__;
+						__data__register__.__type__ = _Type_Start;
+						__data__register__.__data__ = (__data__double__)__par__.length();
+						__data__of__vector__temp__.push_back(__data__register__);
+
+						for(__data__int__ _tp_ = 0x0000; _tp_ < __par__.length(); _tp_++) {
+							__table__data__ __data__char__;
+							__data__char__.__indx__ = __id__par__;
+							__data__char__.__type__ = _Type_Char;
+							__data__char__.__data__ = 
+								(__data__double__)__char__functional__->__id__of__char(__par__[_tp_]);
+							__data__of__vector__temp__.push_back(__data__char__);
+						}
+
+						__table__data__ __data__push__;
+						__data__push__.__indx__ = __id__par__;
+						__data__push__.__type__ = _Type_Finish;
+						__data__push__.__data__ = _Type_NULL;
+						__data__of__vector__temp__.push_back(__data__push__);
+						__its__rewrite__ = 0x00001;
+				}
+			} else {
+				__data__of__vector__temp__.push_back(__data__of__vector__[_tp_]);
+			}
+		}
+
+		clear();
+		for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__temp__.size()); _tp_++) {
+			__data__of__vector__.push_back(__data__of__vector__temp__[_tp_]);
+		}
+	}
+
+	template<
+		typename __data__template>
+	__data__void__ __binary__file__class::update_number(__data__int__ __id__par__, __data__template __par__) {
+		vector<__table__data__> __data__of__vector__temp__;
+		__data__bool__ __its__rewrite__ = 0x0000;
+		if(is_same<__data__template, __data__int__>::value) {
+			for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__.size()); _tp_++) {
+				if(__data__of__vector__[_tp_].__indx__ == __id__par__) {
+					if(!__its__rewrite__) {
+						__table__data__ __data__register__;
+						__data__register__.__indx__ = __id__par__;
+						__data__register__.__type__ = _Type_Start;
+						__data__register__.__data__ = (__data__double__)0x00001;
+						__data__of__vector__temp__.push_back(__data__register__);
+
+						__table__data__ __data__integer__;
+						__data__integer__.__indx__ = __id__par__;
+						__data__integer__.__type__ = _Type_Int;
+						__data__integer__.__data__ = (__data__double__)__par__;
+						__data__of__vector__temp__.push_back(__data__integer__);
+
+						__table__data__ __data__push__;
+						__data__push__.__indx__ = __id__par__;
+						__data__push__.__type__ = _Type_Finish;
+						__data__push__.__data__ = _Type_NULL;
+						__data__of__vector__temp__.push_back(__data__push__);
+						__its__rewrite__ = 0x00001;
+					}
+				} else {
+					__data__of__vector__temp__.push_back(__data__of__vector__[_tp_]);
+				}
+			}
+		} else if(is_same<__data__template, __data__float__>::value) {
+			for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__.size()); _tp_++) {
+				if(__data__of__vector__[_tp_].__indx__ == __id__par__) {
+					if(!__its__rewrite__) {
+						__table__data__ __data__register__;
+						__data__register__.__indx__ = __id__par__;
+						__data__register__.__type__ = _Type_Start;
+						__data__register__.__data__ = (__data__double__)0x00001;
+						__data__of__vector__temp__.push_back(__data__register__);
+
+						__table__data__ __data__integer__;
+						__data__integer__.__indx__ = __id__par__;
+						__data__integer__.__type__ = _Type_Float;
+						__data__integer__.__data__ = (__data__double__)__par__;
+						__data__of__vector__temp__.push_back(__data__integer__);
+
+						__table__data__ __data__push__;
+						__data__push__.__indx__ = __id__par__;
+						__data__push__.__type__ = _Type_Finish;
+						__data__push__.__data__ = _Type_NULL;
+						__data__of__vector__temp__.push_back(__data__push__);
+						__its__rewrite__ = 0x00001;
+					}
+				} else {
+					__data__of__vector__temp__.push_back(__data__of__vector__[_tp_]);
+				}
+			}
+		} else if(is_same<__data__template, __data__double__>::value) {
+			for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__.size()); _tp_++) {
+				if(__data__of__vector__[_tp_].__indx__ == __id__par__) {
+					if(!__its__rewrite__) {
+						__table__data__ __data__register__;
+						__data__register__.__indx__ = __id__par__;
+						__data__register__.__type__ = _Type_Start;
+						__data__register__.__data__ = (__data__double__)0x00001;
+						__data__of__vector__temp__.push_back(__data__register__);
+
+						__table__data__ __data__integer__;
+						__data__integer__.__indx__ = __id__par__;
+						__data__integer__.__type__ = _Type_Double;
+						__data__integer__.__data__ = (__data__double__)__par__;
+						__data__of__vector__temp__.push_back(__data__integer__);
+
+						__table__data__ __data__push__;
+						__data__push__.__indx__ = __id__par__;
+						__data__push__.__type__ = _Type_Finish;
+						__data__push__.__data__ = _Type_NULL;
+						__data__of__vector__temp__.push_back(__data__push__);
+						__its__rewrite__ = 0x00001;
+					}
+				} else {
+					__data__of__vector__temp__.push_back(__data__of__vector__[_tp_]);
+				}
+			}
+		}
+		clear();
+		for(__data__int__ _tp_ = 0x0000; _tp_ < ((__data__int__)__data__of__vector__temp__.size()); _tp_++) {
+			__data__of__vector__.push_back(__data__of__vector__temp__[_tp_]);
 		}
 	}
 
