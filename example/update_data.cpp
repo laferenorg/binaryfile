@@ -10,8 +10,8 @@ int main(int argc, const char* argv[]) {
   db.update_string(1, "Hello, World!");        // This will be change data id number 1 to string
   db.update_number<float>(2, 34.4f);           // This will be change data id number 2 to float
   
-  std::cout << db.get_string(1) << std::endl;  // output = Hello, World!
-  std::cout << db.get_string(2) << std::endl;  // output = 34.4
+  std::cout << db.get_string(1) << std::endl;         // output = Hello, World!
+  std::cout << db.get_number<float>(2) << std::endl;  // output = 34.4
   {
     (void)argc;
     (void)argv;
