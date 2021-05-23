@@ -699,9 +699,8 @@
 	#error "You must using C++"
 #endif
 
-namespace std _GLIBCXX_VISIBILITY(default)
+namespace std
 {
-	_GLIBCXX_BEGIN_NAMESPACE_VERSION
 
 	enum __type__data__ {
 		_Type_Start  = 0x0001,
@@ -1177,8 +1176,6 @@ namespace std _GLIBCXX_VISIBILITY(default)
 	}
 
 	typedef class __binary__file__class binaryfile;
-
-	_GLIBCXX_END_NAMESPACE_VERSION
 } // end of namespace std
 
 #endif // end of header _BINARY_FILE
