@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Check adding_data.cpp
+      run: g++ example/adding_data.cpp
+    - name: Check delete_data.cpp
+      run: g++ example/delete_data.cpp
+    - name: Check read_into_memory.cpp
+      run: g++ example/read_into_memory.cpp
+    - name: Check save_into_file.cpp
+      run: g++ example/save_into_file.cpp
+    - name: Check type_and_length.cpp
+      run: g++ example/type_and_length.cpp
+    - name: Check update_data.cpp
+      run: g++ example/update_data.cpp
