@@ -777,6 +777,7 @@ namespace std
 			__data__void__ __close__management();
 		public:
 			__binary__file__class(const char* __name__file__);
+			__binary__file__class(__data__string__ __name__file__);
 		private:
 			__data__void__ __register__new__(__data__int__);
 			__data__void__ __push__new__();
@@ -1172,6 +1173,10 @@ namespace std
 	}
 
 	__binary__file__class::__binary__file__class(const char* __name__file__) {
+		__helper__data__.__name__ = __name__file__;
+	}
+
+	__binary__file__class::__binary__file__class(__data__string__ __name__file__) {
 		__helper__data__.__name__ = __name__file__;
 	}
 
